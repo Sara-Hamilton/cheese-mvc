@@ -2,6 +2,7 @@ body {
     font-family: sans-serif;
     background-color: Gainsboro;
     color: #444444;
+    margin: 0 20% 0;
 }
 
 a:link, a:visited, input[type=button], input[type=submit], input[type=reset] {
