@@ -17,3 +17,7 @@ a:link, a:visited, input[type=button], input[type=submit], input[type=reset] {
 a:hover, a:active {
     background-color: #FFB454;
 }
+h1 {
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+}
