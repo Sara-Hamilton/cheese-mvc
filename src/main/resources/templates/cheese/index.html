@@ -10,7 +10,8 @@
 
 
 <ul>
-    <li th:each="cheese : ${cheeses}" th:text="${cheese.key + ' is ' + cheese.value}"></li>
+    <li th:each="cheese : ${cheeses}" th:if="${cheese.value.getDescription() != ''}" th:text="${cheese.key + ' is ' + cheese.value.getDescription()}"></li>
+    <li th:each="cheese : ${cheeses}" th:if="${cheese.value.getDescription() == ''}" th:text="${cheese.key}"></li>
 </ul>
 </body>
 </html>
