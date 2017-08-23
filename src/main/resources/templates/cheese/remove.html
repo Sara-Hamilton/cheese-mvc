@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 
 
-<body>
+<body class="container">
 <h1 th:text="${title}"></h1>
 
 <nav th:replace="fragments :: navigation"></nav>
@@ -13,12 +13,25 @@
 <p th:if="${cheeses} and !${cheeses.isEmpty()}">Select cheese to be removed from the list</p>
 
 <form method="post">
+
+    <div th:each="cheese : ${cheeses}" class="checkbox">
+        <input type="checkbox" name="cheeseIds" th:value="${cheese.cheeseId}" th:id="${cheese.cheeseId}"/>
+        <label th:for="${cheese.cheeseId}" th:text="${cheese.name}"></label>
+
+        <br/>
+
+    </div>
+
+    <input type="submit" value="Remove Cheese" />
+</form>
+
+    <!--
     <ul>
         <input th:each="cheese : ${cheeses}" type="checkbox" name="cheeseList" th:value="${cheese.key}"
                th:text="${cheese.key}"/>
     </ul>
     <input type="submit" value="Remove Cheese"/>
-</form>
+    -->
 
 </body>
 </html>

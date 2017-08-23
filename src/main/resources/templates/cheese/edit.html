@@ -6,16 +6,17 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<form method="post" style="max-width:600px;">
+<form method="post" action="/cheese/edit" style="max-width:600px;">
+    <input type="hidden" th:value="${cheeseToEdit.cheeseId}" name="cheeseId" />
     <div class="form-group">
         <label for="name-field">Cheese Name:</label>
-        <input required="true" class="form-control" id="name-field" type="text" name="name" />
+        <input required="true" class="form-control" id="name-field" type="text" name="name" th:value="${cheeseToEdit.name}" />
     </div>
     <div class="form-group">
         <label for="desc-field">Cheese Description:</label>
-        <input class="form-control" id="desc-field" type ="text" name="description"/>
+        <input class="form-control" id="desc-field" type ="text" name="description" th:value="${cheeseToEdit.description}"/>
     </div>
-    <input type="submit" value="Add Cheese" />
+    <input type="submit" value="Edit Cheese" />
 </form>
 
 </body>
