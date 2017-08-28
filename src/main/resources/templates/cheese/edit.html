@@ -7,21 +7,23 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 <form method="post" action="/cheese/edit" style="max-width:600px;" th:object="${cheese}">
-    <input type="hidden" th:value="${cheeseToEdit.cheeseId}" name="cheeseId" />
+    <input type="hidden" th:value="${cheese.cheeseId}" name="cheeseId" />
     <div class="form-group">
-        <label for="name-field">Cheese Name:</label>
-        <input required="true" class="form-control" id="name-field" type="text" name="name" th:value="${cheeseToEdit.name}" />
+        <label th:for="name">Cheese Name:</label>
+        <input class="form-control" th:field="*{name}" />
+        <p><span th:errors="*{name}" class="error"></span></p>
     </div>
     <div class="form-group">
-        <label for="desc-field">Cheese Description:</label>
-        <input class="form-control" id="desc-field" type ="text" name="description" th:value="${cheeseToEdit.description}"/>
+        <label th:for="description">Cheese Description:</label>
+        <input class="form-control" th:field="*{description}" />
+        <span th:errors="*{description}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="type">Type</label>
         <select name="type">
             <option th:each="cheeseType : ${cheeseTypes}"
                     th:value="${cheeseType}"
-                    th:selected="${cheeseType.name.contains(cheeseToEdit.type.name)}"
+                    th:selected="${cheeseType.name.contains(cheese.type.name)}"
                     th:text="${cheeseType.name}">
             </option>
         </select>

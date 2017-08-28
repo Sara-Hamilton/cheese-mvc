@@ -1,5 +1,7 @@
 package org.launchcode.cheesemvc.models;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -17,7 +19,6 @@ public class Cheese {
 
     private int cheeseId;
     private static int nextId = 1;
-
 
     public Cheese(String name, String description) {
         this();

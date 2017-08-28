@@ -40,6 +40,7 @@ public class CheeseController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Cheese");
+            model.addAttribute("cheeseTypes", CheeseType.values());
             return "cheese/add";
         }
 
@@ -67,25 +68,30 @@ public class CheeseController {
     @RequestMapping(value = "edit/{cheeseId}", method = RequestMethod.GET)
     public String displayEditForm(Model model, @PathVariable int cheeseId) {
 
-        String name = CheeseData.getById(cheeseId).getName();
+        // String name = CheeseData.getById(cheeseId).getName();
+        Cheese cheese = CheeseData.getById(cheeseId);
 
-        model.addAttribute("cheeseToEdit", CheeseData.getById(cheeseId));
-        model.addAttribute("title", "Edit Cheese " + name + " ID " + cheeseId );
+        model.addAttribute("cheese", cheese);
+        model.addAttribute("title", "Edit Cheese " + cheese.getName() + " ID " + cheeseId );
         model.addAttribute("cheeseTypes", CheeseType.values());
 
         return "cheese/edit";
     }
 
     @RequestMapping(value = "edit", method = {RequestMethod.POST})
-    public String processEditForm(int cheeseId, String name, String description, CheeseType type) {
+    public String processEditForm(Model model, @ModelAttribute @Valid Cheese cheese, Errors errors,
+                                  int cheeseId, String name, String description, CheeseType type) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("cheese", cheese);
+            model.addAttribute("title", "Edit Cheese " + cheese.getName() + " ID " + cheeseId );
+            model.addAttribute("cheeseTypes", CheeseType.values());
+            return "cheese/edit";
+        }
+
          CheeseData.getById(cheeseId).setName(name);
          CheeseData.getById(cheeseId).setDescription(description);
          CheeseData.getById(cheeseId).setType(type);
-
-        //Cheese cheeseToEdit = CheeseData.getById(cheeseId);
-        //cheeseToEdit.setName(name);
-        //cheeseToEdit.setDescription(description);
-        //CheeseData.add(cheeseToEdit);
 
         return "redirect:";
     }
