@@ -17,7 +17,6 @@ public class Cheese {
     private int cheeseId;
     private static int nextId = 1;
 
-    @NotNull
     @Digits(integer=1,fraction=0)
     @Min(value = 1, message="Enter a number between 1 and 5.")
     @Max(value = 5, message="Enter a number between 1 and 5.")
