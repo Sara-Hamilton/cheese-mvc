@@ -1,9 +1,6 @@
 package org.launchcode.cheesemvc.models;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class Cheese {
 
@@ -20,6 +17,12 @@ public class Cheese {
     private int cheeseId;
     private static int nextId = 1;
 
+    @NotNull
+    @Digits(integer=1,fraction=0)
+    @Min(value = 1, message="Enter a number between 1 and 5.")
+    @Max(value = 5, message="Enter a number between 1 and 5.")
+    private int rating;
+
     public Cheese(String name, String description) {
         this();
         this.name = name;
@@ -29,6 +32,14 @@ public class Cheese {
     public Cheese() {
         cheeseId = nextId;
         nextId++;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public int getCheeseId() {

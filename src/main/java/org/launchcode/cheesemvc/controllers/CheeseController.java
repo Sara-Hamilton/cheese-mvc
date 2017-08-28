@@ -80,7 +80,7 @@ public class CheeseController {
 
     @RequestMapping(value = "edit", method = {RequestMethod.POST})
     public String processEditForm(Model model, @ModelAttribute @Valid Cheese cheese, Errors errors,
-                                  int cheeseId, String name, String description, CheeseType type) {
+                                  int cheeseId, String name, String description, CheeseType type, int rating) {
 
         if (errors.hasErrors()) {
             model.addAttribute("cheese", cheese);
@@ -92,6 +92,7 @@ public class CheeseController {
          CheeseData.getById(cheeseId).setName(name);
          CheeseData.getById(cheeseId).setDescription(description);
          CheeseData.getById(cheeseId).setType(type);
+         CheeseData.getById(cheeseId).setRating(rating);
 
         return "redirect:";
     }
