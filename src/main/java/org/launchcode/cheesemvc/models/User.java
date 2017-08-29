@@ -1,11 +1,24 @@
 package org.launchcode.cheesemvc.models;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class User {
+
+    @NotNull
+    @Size(min=5, max=15)
     private String username;
+
+    @NotNull
+    @Size(min=3, max=50)
     private String email;
+
+    @NotNull
+    @Size(min=5, max=25)
     private String password;
 
     public User(String username, String email, String password) {
+        this();
         this.username = username;
         this.email = email;
         this.password = password;
@@ -63,4 +76,3 @@ public class User {
 
 
     }
-}

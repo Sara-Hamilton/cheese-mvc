@@ -18,14 +18,16 @@ public class UserData {
 
 
     //getById
-    public User getById() {
+    public static User getById(int id) {
         User aUser = null;
 
-        for (User someUser : users); {
-        if(someUser.getUserId() == id) {
-            aUser = someUser;
+        for (User someUser : users) {
+            if (someUser.getUserId() == id) {
+                aUser = someUser;
+            }
         }
             return aUser;
         }
     }
-}
+
+
