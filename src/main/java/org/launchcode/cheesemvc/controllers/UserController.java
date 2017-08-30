@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String add(Model model, @ModelAttribute @Valid User newUser, Errors errors, String verifyPassword) { 
+    public String add(Model model, @ModelAttribute @Valid User newUser, Errors errors, String verifyPassword) {
 
         model.addAttribute("users", UserData.getAll());
 
