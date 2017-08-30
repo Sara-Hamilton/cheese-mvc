@@ -4,13 +4,14 @@
 <body class="container">
 <h1 th:text="${title}">Default Title</h1>
 
-<nav th:replace="fragments :: navigation"></nav>
+<!-- <nav th:replace="fragments :: navigation"></nav> -->
 
 <form method="post" style="max-width:600px;" th:object="${user}">
     <div class="form-group">
         <label th:for="username">Username:</label>
         <input class="form-control" th:field="*{username}" />
         <span th:errors="*{username}" class="error"></span>
+        <span th:text="${usernameError}"></span>
     </div>
     <div class="form-group">
         <label th:for="email">email:</label>

@@ -2,6 +2,7 @@ package org.launchcode.cheesemvc.models;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 public class User {
 
@@ -17,11 +18,14 @@ public class User {
     @Size(min=5, max=25)
     private String password;
 
-    public User(String username, String email, String password) {
+    private Date date;
+
+    public User(String username, String email, String password, Date date) {
         this();
         this.username = username;
         this.email = email;
         this.password = password;
+        this.date = date;
     }
 
     private int userId;
@@ -30,6 +34,7 @@ public class User {
     public User() {
         userId = nextId;
         nextId++;
+        date = new Date();
 
     }
 
@@ -73,6 +78,12 @@ public class User {
         this.password = password;
     }
 
+    public Date getDate() {
+        return date;
+    }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     }

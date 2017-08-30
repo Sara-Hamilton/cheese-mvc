@@ -3,6 +3,7 @@ package org.launchcode.cheesemvc.controllers;
 import org.launchcode.cheesemvc.models.Cheese;
 import org.launchcode.cheesemvc.models.CheeseData;
 import org.launchcode.cheesemvc.models.CheeseType;
+import org.launchcode.cheesemvc.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -96,4 +97,5 @@ public class CheeseController {
 
         return "redirect:";
     }
+
 }

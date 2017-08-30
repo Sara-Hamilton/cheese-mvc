@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title></title>
-</head>
-<body>
-<p th:text="|Hello ${user.username}|">Hello  </p>
-<ul>
-    <li th:each="user : ${users}" th:text="${user.username}"></li>
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+
+<!-- <nav th:replace="fragments :: navigation"></nav> -->
+
+<h1 th:if="${user}" th:text="|Hello ${user.username}|">Hello  </h1>
+<h3>Users</h3>
+<ul style="list-style-type:none"> <!-- th:object="${user}" th:field="*{user}" -->
+    <li th:each="user : ${users}"><a th:href="@{'/user/details/' + ${user.userId}}" th:text="${user.username}">edit</a></li>
 </ul>
 </body>
 </html>
