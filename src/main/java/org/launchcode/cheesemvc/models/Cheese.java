@@ -1,8 +1,16 @@
 package org.launchcode.cheesemvc.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.*;
 
+@Entity
 public class Cheese {
+
+    @Id
+    @GeneratedValue
+    private int id;
 
     @NotNull
     @Size(min=3, max=15)
@@ -14,8 +22,8 @@ public class Cheese {
 
     private CheeseType type;
 
-    private int cheeseId;
-    private static int nextId = 1;
+    // private int cheeseId;
+    // private static int nextId = 1;
 
     @Digits(integer=1,fraction=0)
     @Min(value = 1, message="Enter a number between 1 and 5.")
@@ -23,14 +31,15 @@ public class Cheese {
     private int rating;
 
     public Cheese(String name, String description) {
-        this();
+        // this();
         this.name = name;
         this.description = description;
     }
 
-    public Cheese() {
-        cheeseId = nextId;
-        nextId++;
+    public Cheese() { }
+
+    public int getId() {
+        return id;
     }
 
     public int getRating() {
@@ -41,13 +50,13 @@ public class Cheese {
         this.rating = rating;
     }
 
-    public int getCheeseId() {
-        return cheeseId;
-    }
+    // public int getCheeseId() {
+        // return cheeseId;
+    // }
 
-    public void setCheeseId(int cheeseId) {
-        this.cheeseId = cheeseId;
-    }
+    // public void setCheeseId(int cheeseId) {
+        // this.cheeseId = cheeseId;
+    // }
 
     public String getName() {
         return name;
