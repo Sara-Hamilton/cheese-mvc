@@ -81,10 +81,12 @@ public class CheeseController {
 
     @RequestMapping(value = "edit", method = {RequestMethod.POST})
     public String processEditForm(Model model, @ModelAttribute @Valid Cheese cheese, Errors errors,
-                                  int cheeseId, String name, String description, CheeseType type, int rating) {
+                                  @RequestParam int cheeseId, String name, String description, CheeseType type, int rating) {
 
+        // cheeseID added to model and th:if statements added to edit.html hidden input to prevent cheeseId from being set to 0 if there are errors
         if (errors.hasErrors()) {
-            model.addAttribute("cheese", cheese);
+            model.addAttribute("cheeseID", cheeseId);
+            //model.addAttribute("cheese", cheese);
             model.addAttribute("title", "Edit Cheese " + cheese.getName() + " ID " + cheeseId );
             model.addAttribute("cheeseTypes", CheeseType.values());
             return "cheese/edit";
